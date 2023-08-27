@@ -31,25 +31,6 @@ p {
   line-height: 1.8;
 }
 
-.shortener {
-  background-color: hsl(257, 27%, 26%);
-  height: 17.188rem;
-  border-radius: 8px;
-}
-
-.shortener img {
-  height: 17.88rem;
-  @apply w-full rounded-lg;
-}
-
-.shortener .form {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-}
-
 .max-width2 {
   @apply max-w-6xl mx-auto;
 }
