@@ -1,5 +1,11 @@
+import { useState } from "react";
+import Popup from "./Popup";
+
 export default function Cap(props) {
   const { data } = props;
+
+  const [selectedCapsule, setSelectedCapsule] = useState(null);
+
   return (
     <>
       {!data ? (
@@ -26,18 +32,33 @@ export default function Cap(props) {
                     {capsule.water_landings} water landings
                   </li>
                   <li className="mb-1">Reused {capsule.reuse_count} times</li>
+                  <li className="mb-1">{capsule.launch_year}</li>
+
                   {capsule.status === "active" ? (
                     <li className="text-emerald-500">Active</li>
                   ) : (
                     <li className="text-rose-500">Retired</li>
                   )}
+                  <li className="mb-1">
+                    <button
+                      onClick={() => setSelectedCapsule(capsule)}
+                      className="hover: bg-stone-800"
+                    >
+                      More Details
+                    </button>
+                  </li>
                 </ul>
-
-                <p className="mt-5 opacity-75">{capsule.last_update}</p>
               </article>
             ))}
           </div>
         </section>
+      )}
+
+      {selectedCapsule && (
+        <Popup
+          capsule={selectedCapsule}
+          onClose={() => setSelectedCapsule(null)}
+        />
       )}
     </>
   );

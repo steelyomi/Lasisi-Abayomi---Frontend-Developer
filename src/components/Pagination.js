@@ -8,6 +8,16 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, paginate }) => {
   return (
     <nav className="mt-4">
       <ul className="flex justify-center space-x-2">
+        {currentPage > 1 && (
+          <li>
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              className="px-3 py-2 rounded bg-gray-200 hover:bg-blue-500 hover:text-white focus:outline-none"
+            >
+              Previous
+            </button>
+          </li>
+        )}
         {pageNumbers.map((number) => (
           <li key={number}>
             <button
@@ -22,6 +32,16 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, paginate }) => {
             </button>
           </li>
         ))}
+        {currentPage < pageNumbers.length && (
+          <li>
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              className="px-3 py-2 rounded bg-gray-200 hover:bg-blue-500 hover:text-white focus:outline-none"
+            >
+              Next
+            </button>
+          </li>
+        )}
       </ul>
     </nav>
   );
