@@ -54,13 +54,16 @@ const SearchCap = () => {
           >
             Status
           </label>
-          <input
-            type="text"
+          <select
+            id="dropdown"
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            placeholder="Filter by status"
             className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
-          />
+          >
+            <option value="">Filter by Status</option>
+            <option value="active">Active</option>
+            <option value="retired">Retired</option>
+          </select>
         </div>
         <div className="mb-4">
           <label
@@ -93,7 +96,9 @@ const SearchCap = () => {
           />
         </div>
       </form>
+
       <Cap data={currentCapsules} />
+
       <Pagination
         itemsPerPage={capsulesPerPage}
         totalItems={filteredCapsules.length}
